@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-export const API_BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`;
+const defaultDevUrl = 'http://localhost:3000';
+const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? defaultDevUrl : '');
+export const API_BASE_URL = rawApiUrl ? (rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`) : '/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,

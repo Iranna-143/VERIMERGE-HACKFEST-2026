@@ -9,6 +9,8 @@ import { Eye, EyeOff, Sparkles } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { api } from "../../lib/api";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -179,12 +181,6 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   }
 );
 PasswordInput.displayName = "PasswordInput";
-
-import axios from 'axios';
-import { useAuth } from '@/context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-
-// ... (keep the rest unchanged until SignInForm)
 
 function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
